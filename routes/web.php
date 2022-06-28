@@ -23,6 +23,11 @@ Route::get('/', function () {
 
 
 Route::get('/login', function(){
+
+    if(!auth()->guest()){
+        return redirect('/dasboard');
+    }
+
     return view('login');
 })->name('login');
 
