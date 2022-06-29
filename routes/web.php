@@ -23,11 +23,9 @@ Route::get('/', function () {
 
 
 Route::get('/login', function(){
-
     if(!auth()->guest()){
         return redirect('/dasboard');
     }
-
     return view('login');
 })->name('login');
 
@@ -39,6 +37,6 @@ Route::group(['middleware'=>'auth'],function (){
     Route::get('/logout',[AuthController::class,'logout']);
     Route::get('/users',[AuthController::class,'users']);
     Route::get('/post',[PostController::class,'index']);
-    Route::get('/dashboard',[AuthController::class,'dashboard'])->middleware('auth');
+    Route::get('/dashboard',[AuthController::class,'dashboard']);
 
 });
